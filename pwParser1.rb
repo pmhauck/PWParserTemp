@@ -1,48 +1,35 @@
-#basic ruby program for getting me started in Ruby and git. Based on propublica template
+#pwParser1.rb
 
-#require statements
+#Ruby script for downloading RSS feed from <programmableweb.com>, and save it to disk
+#as JSON file "localJsonDump.json"
 
-require 'open-uri'
-require 'rubygems'
-require 'crack'
-require 'json'
-#require 'json_pure'
+#Based on propublica webscraping template
+#Peter Hauck
 
+#Initialization
+	require 'open-uri'
+	require 'rubygems'
+	require 'crack'
+	require 'json'
 
-print "Passed: 'require' statements."+"\n"
+	#print "Passed: 'require' statements."+"\n"
+	
+#Open programmableweb
+	targetURL = "http://feeds2.feedburner.com/programmableweb/apis"
+	page = open(targetURL)
+	print "\t"+"opening URL "+"\n"
 
-targetURL = "http://feeds2.feedburner.com/programmableweb/apis"
+#Parse XML and pass it as JSON
+	parsedXML = Crack::XML.parse(page)
+	print "\t"+"I'm using crack! No, not that kind."+"\n"
+	parsedJSON = parsedXML.to_json
 
-#file = open("http://feeds2.feedburner.com/programmableweb/apis")
+#Write JSON to file
+	file = File.open("localJsonDump.json",'w')
+	file.write(parsedJSON)
+	file.close
+	print "\t"+"writing JSON script to: localJsonDump.json"+"\n"
 
-page = open(targetURL)
-
-#print "Passed: open targetURL"
-
-#file = File.open("tempLocalXmlDump.xml",'w')
-
-#print "Passed open temp file for XML Dump."
-
-#file.write(page.readlines)
-
-#print "Passed file.write"
-
-#file.close
-
-#print "Passed file.close"
-
-parsedXML = Crack::XML.parse(page)
-
-print "I'm using crack! No, not that kind."
-
-parsedJSON = parsedXML.to_json
-
-file = File.open("localJsonDump.json",'w')
-
-file.write(parsedJSON)
-
-file.close
-# wait 2 seconds
+#Exit Routine
 sleep 2
-
 print "\n"
