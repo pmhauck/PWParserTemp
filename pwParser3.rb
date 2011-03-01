@@ -1,4 +1,4 @@
-#pwParser2.rb
+#pwParser3.rb
 
 #Ruby script for accessing API's <programmableweb.com>, and save it to disk
 #as JSON file "localJsonDump.json"
