@@ -2,7 +2,7 @@
 
 #Ruby script for accessing API's <programmableweb.com>, and save it to disk
 #as JSON file "localJsonDump.json"
-#Uses Rugy get method.
+#Uses Ruby get method.
 #Requires local file 'pwApiKey.text'
 
 #Peter Hauck
