@@ -3,7 +3,7 @@
 #Ruby script for accessing API's <programmableweb.com>, and save it to disk
 #as JSON file "localJsonDump.json"
 #Uses Ruby get method.
-#Requires local file 'pwApiKey.text'
+#Requires local file 'pwApiKey.txt'
 
 #Peter Hauck
 
@@ -16,7 +16,7 @@
 	print "\t"+"Passed: 'require' statements."+"\n"
 
 #Open Local API Key file and pass to string suitable for URL
-	apiKeyFile = File.open('pwApiKey.text','rb')
+	apiKeyFile = File.open('pwApiKey.txt','rb')
 	apiKeyString = "?apikey=" + apiKeyFile.read	
 	apiKeyString = apiKeyString.split("\n").first#DELETE \n left over from readfile 
 	apiKeyFile.close	
